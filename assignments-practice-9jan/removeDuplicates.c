@@ -26,22 +26,28 @@ int main()
 
     for (int i = 0; i < lengthOfString; i++)
     {
-        if (arr[i] > 1)
-            continue;
-        else if (str[i] >= 'a' && str[i] <= 'z')
+        if (str[i] >= 'a' && str[i] <= 'z')
         {
+            if (arr[str[i] - 'a'] == 0)
+            {
+                printf("%c", str[i]);
+            }
             arr[str[i] - 'a']++;
         }
         else if (str[i] >= 'A' && str[i] <= 'Z')
         {
+            if (arr[str[i] - 'A'] == 0)
+            {
+                printf("%c", str[i]);
+            }
             arr[str[i] - 'A']++;
         }
     }
 
-    for (int i = 0; i < 26; i++)
-    {
-        printf("%c : %d\n", 'a' + i, arr[i]);
-    }
+    // for (int i = 0; i < 26; i++)
+    // {
+    //     printf("%c : %d\n", 'a' + i, arr[i]);
+    // }
 
     free(str);
 
