@@ -15,11 +15,11 @@ int stringLength(char *str)
 int splitWords(char *str, char (*arr)[100])
 {
     int wordCount = 0, wordEnd = 0;
-    for (int i = 0; str[i] != '\0'; i++)
+    for (int index = 0; str[index] != '\0'; index++)
     {
-        if (str[i] != ' ' && str[i] != ',')
+        if (str[index] != ' ' && str[index] != ',')
         {
-            arr[wordCount][wordEnd] = str[i];
+            arr[wordCount][wordEnd] = str[index];
             wordEnd++;
         }
         else if (wordEnd > 0)

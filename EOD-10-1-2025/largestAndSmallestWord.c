@@ -15,11 +15,11 @@ int stringLength(char *str)
 int splitWords(char *str, char (*arr)[100])
 {
     int wordCount = 0, wordEnd = 0;
-    for (int i = 0; str[i] != '\0'; i++)
+    for (int index = 0; str[index] != '\0'; index++)
     {
-        if (str[i] != ' ' && str[i] != ',')
+        if (str[index] != ' ' && str[index] != ',')
         {
-            arr[wordCount][wordEnd] = str[i];
+            arr[wordCount][wordEnd] = str[index];
             wordEnd++;
         }
         else if (wordEnd > 0)
@@ -47,18 +47,18 @@ void takeInput(char **str)
 void findLargestAndSmallestWord(char **smallestString, char **largestString, int countOfWords, char (*arr)[100])
 {
     int minimum = 1e9, maximum = -1;
-    for (int i = 0; i < countOfWords; i++)
+    for (int index = 0; index < countOfWords; index++)
     {
-        int len = stringLength(arr[i]);
+        int len = stringLength(arr[index]);
         if (len > maximum)
         {
             maximum = len;
-            * largestString = arr[i];
+            * largestString = arr[index];
         }
         if (len < minimum)
         {
             minimum = len;
-            * smallestString = arr[i];
+            * smallestString = arr[index];
         }
     }
 }

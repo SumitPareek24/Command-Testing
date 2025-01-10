@@ -12,6 +12,28 @@ int stringLength(char *str)
     return len;
 }
 
+void checkSubstring(char * arr, char * str) {
+    int maxi = 0;
+    int current = 0;
+    int left = 0;
+    for (int right = 0; right < stringLength(str); right++)
+    {
+        while(arr[str[right] - 'a'] > 0) { 
+            arr[str[left] - 'a']--;
+            left++;
+        }
+
+        arr[str[right] - 'a']++;
+
+        if (maxi < right - left + 1)
+        {
+            maxi = right - left + 1;
+        }
+    }
+
+    printf("%d\n", maxi);
+}
+
 int main()
 {
     char arr[26] = {0};
@@ -22,25 +44,7 @@ int main()
     scanf("%s", str);
     str = (char *)realloc(str, stringLength(str) * sizeof(char));
 
-    int maxi = 0;
-    int current = 0;
-    int j = 0;
-    for (int i = 0; i < stringLength(str); i++)
-    {
-        while(arr[str[i] - 'a'] > 0) { 
-            arr[str[j] - 'a']--;
-            j++;
-        }
-
-        arr[str[i] - 'a']++;
-
-        if (maxi < i - j + 1)
-        {
-            maxi = i - j + 1;
-        }
-    }
-
-    printf("%d\n", maxi);
+    checkSubstring(arr, str);
 
     return 0;
 }

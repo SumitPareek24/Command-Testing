@@ -16,11 +16,9 @@ void takeInput(char *str1, char *str2)
 {
     printf("enter 1st string: ");
     scanf("%[^\n]%*c", str1);
-    // str1 = (char *)realloc(str1, stringLength(str1) * sizeof(char) + 1);
 
     printf("enter 2nd string: ");
     scanf("%[^\n]%*c", str2);
-    // str2 = (char *)realloc(str2, stringLength(str2) * sizeof(char) + 1);
 }
 
 void checkString(char *str1, char *str2)
@@ -41,14 +39,14 @@ int main()
     int n = stringLength(str1);
     int m = stringLength(str2);
 
-    int i = 0, j = 0, check = 0;
+    int left = 0, right = 0, check = 0;
 
-    while (i < n)
+    while (left < n)
     {
-        if (str1[i] == str2[j])
+        if (str1[left] == str2[right])
         {
-            j++;
-            if (j == m)
+            right++;
+            if (right == m)
             {
                 check = 1;
                 break;
@@ -56,10 +54,10 @@ int main()
         }
         else
         {
-            i = i - j;
-            j = 0;
+            left = left - right;
+            right = 0;
         }
-        i++;
+        left++;
     }
 
     check ? printf("%s is substring of string %s\n", str2, str1) : printf("-1\n");
