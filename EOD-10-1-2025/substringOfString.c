@@ -21,8 +21,27 @@ void takeInput(char *str1, char *str2)
     scanf("%[^\n]%*c", str2);
 }
 
-void checkString(char *str1, char *str2)
+void checkString(char *str1, char *str2, int lengthOfFirstString, int lengthOfSecondString, int *check)
 {
+    int left = 0, right = 0;
+    while (left < lengthOfFirstString)
+    {
+        if (str1[left] == str2[right])
+        {
+            right++;
+            if (right == lengthOfSecondString)
+            {
+                check = 1;
+                break;
+            }
+        }
+        else
+        {
+            left = left - right;
+            right = 0;
+        }
+        left++;
+    }
 }
 
 int main()
@@ -36,29 +55,12 @@ int main()
 
     takeInput(str1, str2);
 
-    int n = stringLength(str1);
-    int m = stringLength(str2);
+    int lengthOfFirstString = stringLength(str1);
+    int lengthOfSecondString = stringLength(str2);
 
-    int left = 0, right = 0, check = 0;
+    int check = 0;
 
-    while (left < n)
-    {
-        if (str1[left] == str2[right])
-        {
-            right++;
-            if (right == m)
-            {
-                check = 1;
-                break;
-            }
-        }
-        else
-        {
-            left = left - right;
-            right = 0;
-        }
-        left++;
-    }
+    checkString(str1, str2, lengthOfFirstString, lengthOfSecondString, &check);
 
     check ? printf("%s is substring of string %s\n", str2, str1) : printf("-1\n");
 
